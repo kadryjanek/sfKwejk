@@ -1,0 +1,3 @@
+kwejk_mems_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: KwejkMemsBundle:Default:index }

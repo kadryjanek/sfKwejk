@@ -1,0 +1,4 @@
+services:
+#    kwejk_layout.example:
+#        class: Kwejk\LayoutBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

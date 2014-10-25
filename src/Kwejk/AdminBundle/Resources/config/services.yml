@@ -1,0 +1,4 @@
+services:
+#    kwejk_admin.example:
+#        class: Kwejk\AdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

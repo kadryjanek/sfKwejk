@@ -1,0 +1,4 @@
+services:
+#    kwejk_mems.example:
+#        class: Kwejk\MemsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
