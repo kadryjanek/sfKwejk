@@ -77,3 +77,11 @@ doctrine_migrations:
     table_name: migration_versions
     name: Application Migrations
 
+admingenerator_generator:
+    # choose  and enable at least one
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
+    use_propel:           false
+    use_doctrine_orm:     true
+    use_doctrine_odm:     false
+
+
