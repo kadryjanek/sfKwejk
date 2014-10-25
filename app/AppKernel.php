@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Kwejk\UserBundle\KwejkUserBundle(),
             new Kwejk\MemsBundle\KwejkMemsBundle(),
             new Kwejk\LayoutBundle\KwejkLayoutBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
