@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ KwejkLayoutBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -73,7 +73,7 @@ swiftmailer:
 
 doctrine_migrations:
     dir_name: %kernel.root_dir%/migrations
-    namespace: Application\Migrations
+    namespace: Application\Migration
     table_name: migration_versions
     name: Application Migrations
 
