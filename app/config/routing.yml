@@ -1,3 +1,8 @@
+KwejkMemsBundle_admin_kwejk_mems_bundle_comment:
+    resource: "@KwejkMemsBundle/Controller/Comment/"
+    type:     admingenerator
+    prefix:   /admin/comment
+
 kwejk_layout:
     resource: "@KwejkLayoutBundle/Resources/config/routing.yml"
     prefix:   /
