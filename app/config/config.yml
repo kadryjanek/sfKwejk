@@ -77,6 +77,11 @@ doctrine_migrations:
     table_name: migration_versions
     name: Application Migrations
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Kwejk\UserBundle\Entity\User
+
 admingenerator_generator:
     # choose  and enable at least one
     base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
