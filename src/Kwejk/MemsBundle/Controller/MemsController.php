@@ -35,11 +35,13 @@ class MemsController extends Controller
 
     public function showAction($slug)
     {
+        $request = $this->getRequest();
+        $user = $this->getUser();
+        
         $mem = $this->getDoctrine()
             ->getRepository('KwejkMemsBundle:Mem')
             ->findOneBy([
-                'slug'          => $slug,
-                // 'isAccepted'    => true
+                'slug'          => $slug
             ]);
          
         if (!$mem) {
@@ -48,7 +50,30 @@ class MemsController extends Controller
         
         $comment = new Comment();
         $form = $this->createForm(new AddCommentType(), $comment);
+        
+        if ($user && $user->hasRole('ROLE_USER')) {
+
+            $comment->setMem($mem);
+            $comment->setCreatedBy($user);
+            // TODO: homework
+            // $comment->setHost($host);
+            // ...
             
+            $form->handleRequest($request);
+            
+            if ($form->isValid()) {
+            
+                // save data
+                $this->persist($comment);
+            
+                $this->addFlash('notice', "Komentarz został pomyślnie zapisany.");
+            
+                return $this->redirect($this->generateUrl('kwejk_mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        }
+        
         return $this->render('KwejkMemsBundle:Mems:show.html.twig', array(
             'mem'   => $mem,
             'form'  => $form->createView()
@@ -67,7 +92,6 @@ class MemsController extends Controller
         $mem->setCreatedBy($user);
         
         $form = $this->createForm(new AddMemType(), $mem);
-        
         $form->handleRequest($request);
         
         if ($form->isValid()) {

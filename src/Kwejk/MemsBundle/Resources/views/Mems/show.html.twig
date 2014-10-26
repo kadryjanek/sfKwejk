@@ -31,15 +31,20 @@
         
         <p>Nie znaleziono komentarzy.</p>
         
-        {# if app.user #}
-        {% if is_granted('ROLE_USER') %}
-        
-            <h3>Dodaj jako pierwszy!</h3>
-            {{ form(form) }}
-            
-        {% endif %}
-    
     {% endfor %}
+    
+    {# if app.user #}
+    {% if is_granted('ROLE_USER') %}
+    
+        {% if mem.comments|length > 0 %}
+            <h3>Dodaj komentarz!</h3>
+        {% else %}
+            <h3>Dodaj jako pierwszy!</h3>
+        {% endif %}
+        
+        {{ form(form) }}
+        
+    {% endif %}
     
 </div>
         
