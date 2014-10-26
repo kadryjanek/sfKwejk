@@ -6,6 +6,8 @@
 
     <h1>Strona główna</h1>
     
+    <a href="{{ path('kwejk_mems_add') }}" class="btn btn-info">Dodaj mema</a>
+    
     {% for mem in pages %}
         <div>
             <a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">

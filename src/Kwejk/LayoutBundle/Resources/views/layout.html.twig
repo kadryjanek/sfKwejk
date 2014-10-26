@@ -16,6 +16,12 @@
     <body>
         {{ knp_menu_render('KwejkLayoutBundle:Builder:mainMenu') }}
         
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success" role="alert">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+            
         <div class="container">
             {% block body %}{% endblock %}
         </div>

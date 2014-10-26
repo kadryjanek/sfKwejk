@@ -28,7 +28,7 @@ class Controller extends BaseController
     protected function persist($entity, $andFlush = true)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->persist($product);
+        $em->persist($entity);
         
         if ($andFlush) {
             $em->flush();

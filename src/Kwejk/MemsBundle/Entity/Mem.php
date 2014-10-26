@@ -85,7 +85,7 @@ class Mem
      *
      * @ORM\Column(name="is_accepted", type="boolean")
      */
-    private $isAccepted;
+    private $isAccepted = false;
 
     /**
      * Constructor
