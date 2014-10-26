@@ -3,6 +3,7 @@
 namespace Kwejk\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
@@ -20,25 +21,25 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Mem", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $mems;
+    protected $mems;
     
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Comment", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $comments;
+    protected $comments;
     
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Rating", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $ratings;
+    protected $ratings;
     
     /**
      * Get id
@@ -54,6 +55,10 @@ class User
      */
     public function __construct()
     {
+        parent::__construct();
+        
+        $this->roles = ['ROLE_USER'];
+        
         $this->mems = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
