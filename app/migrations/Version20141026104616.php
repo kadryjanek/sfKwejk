@@ -1,6 +1,6 @@
 <?php
 
-namespace Migrations;
+namespace Application\Migration;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20141026102310 extends AbstractMigration
+class Version20141026104616 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
