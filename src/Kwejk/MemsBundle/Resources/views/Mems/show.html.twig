@@ -2,13 +2,18 @@
 
 {% block title %}{{ mem.title }}{% endblock %}
 
+{% block stylesheets %} 
+
+    {{ parent() }}
+
+{% endblock %}
+
 {% block body %}
 
 <h1>{{ block('title') }}</h1>
 
 <div>
-    <p>{{ mem.title }}</p>
-    
+
     <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
     
     <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
@@ -24,7 +29,15 @@
     
     {% else %}
         
-        <p>Nie znaleziono komentarzy. <a href="#" title="Dodaj komentarz">Dodaj jako pierwszy!</a></p>
+        <p>Nie znaleziono komentarzy.</p>
+        
+        {# if app.user #}
+        {% if is_granted('ROLE_USER') %}
+        
+            <h3>Dodaj jako pierwszy!</h3>
+            {{ form(form) }}
+            
+        {% endif %}
     
     {% endfor %}
     
