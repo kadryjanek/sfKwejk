@@ -1,7 +1,8 @@
-KwejkMemsBundle_admin_kwejk_mems_bundle_comment:
-    resource: "@KwejkMemsBundle/Controller/Comment/"
+KwejkAdminBundle_admin_kwejk_admin_bundle_mem:
+    resource: "@KwejkAdminBundle/Controller/Mem/"
     type:     admingenerator
-    prefix:   /admin/comment
+    prefix:   /admin/mem
+
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
