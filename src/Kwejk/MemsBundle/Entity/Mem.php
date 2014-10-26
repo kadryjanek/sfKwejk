@@ -76,7 +76,16 @@ class Mem
      */
     private $isAccepted;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -200,14 +209,6 @@ class Mem
     public function getIsAccepted()
     {
         return $this->isAccepted;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

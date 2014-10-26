@@ -1,0 +1,33 @@
+{% extends "KwejkLayoutBundle::layout.html.twig" %}
+
+{% block title %}{{ mem.title }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ block('title') }}</h1>
+
+<div>
+    <p>{{ mem.title }}</p>
+    
+    <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+    
+    <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
+    
+    <h3>Komentarze ({{ mem.comments|length }})</h3>
+    
+    {% for comment in mem.comments %}
+    
+        <p id="comment-{{ comment.id }}">
+            {{ comment.comment }}
+            <small>Dodany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('Y-m-d H:i:s') }}</small>
+        </p>
+    
+    {% else %}
+        
+        <p>Nie znaleziono komentarzy. <a href="#" title="Dodaj komentarz">Dodaj jako pierwszy!</a></p>
+    
+    {% endfor %}
+    
+</div>
+        
+{% endblock %}
