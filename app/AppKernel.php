@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Kwejk\UserBundle\KwejkUserBundle(),
             new Kwejk\MemsBundle\KwejkMemsBundle(),
             new Kwejk\LayoutBundle\KwejkLayoutBundle(),
+            new Kwejk\CoreBundle\KwejkCoreBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
