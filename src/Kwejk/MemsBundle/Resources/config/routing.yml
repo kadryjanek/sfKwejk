@@ -9,3 +9,11 @@ kwejk_mems_list:
 kwejk_mems_show:
     path:     /{slug}
     defaults: { _controller: KwejkMemsBundle:Mems:show }
+
+kwejk_mems_comment_new:
+    path:     /comment/new
+    defaults: { _controller: KwejkMemsBundle:Comment:new }
+
+kwejk_mems_comment_edit:
+    path:     /comment/edit/{id}
+    defaults: { _controller: KwejkMemsBundle:Comment:edit }
