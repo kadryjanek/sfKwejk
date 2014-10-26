@@ -3,6 +3,9 @@ KwejkMemsBundle_admin_kwejk_mems_bundle_comment:
     type:     admingenerator
     prefix:   /admin/comment
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 kwejk_mems:
     resource: "@KwejkMemsBundle/Resources/config/routing.yml"
     prefix:   /
@@ -15,5 +18,3 @@ kwejk_admin:
     resource: "@KwejkAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

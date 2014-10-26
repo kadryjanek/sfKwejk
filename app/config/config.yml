@@ -96,4 +96,19 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
 
-
+vich_uploader:
+    db_driver: orm
+    mappings:
+        mems_image:
+            uri_prefix:         uploads/mems
+            upload_destination: %kernel.root_dir%/../web/uploads/mems
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
+            
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            sluggable: true

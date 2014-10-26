@@ -4,12 +4,16 @@ namespace Kwejk\MemsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Mems
  *
  * @ORM\Table(name="mem")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Mem
 {
@@ -49,16 +53,23 @@ class Mem
     private $ratings;
     
     /**
+     * @Vich\UploadableField(mapping="mems_image", fileNameProperty="imageName")
+     *
+     * @var File $imageFile
+     */
+    private $imageFile;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
+    
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", length=255, unique=true)
      */
     private $slug;
 
@@ -303,5 +314,25 @@ class Mem
     public function getRatings()
     {
         return $this->ratings;
+    }
+    
+    /**
+     * Set imageFile
+     *
+     * @param File $imageFile
+     */
+    public function setImageFile(File $imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+    
+    /**
+     * Get imageFile
+     *
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }
