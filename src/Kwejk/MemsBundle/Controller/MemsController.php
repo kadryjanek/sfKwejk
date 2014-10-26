@@ -9,16 +9,23 @@ use Kwejk\MemsBundle\Entity\Comment;
 
 class MemsController extends Controller
 {
-    public function listAction()
+    public function listAction($page)
     {
         $mems = $this->getDoctrine()
             ->getRepository('KwejkMemsBundle:Mem')
             ->findBy([
                 'isAccepted' => true,
             ]);
+            
+        $paginator  = $this->get('knp_paginator');
+        $pages = $paginator->paginate(
+                $mems,
+                $page,
+                5
+        );
         
         return $this->render('KwejkMemsBundle:Mems:list.html.twig', array(
-            'mems' => $mems,
+            'pages' => $pages,
         ));
     }
 

@@ -6,7 +6,7 @@
 
     <h1>Strona główna</h1>
     
-    {% for mem in mems %}
+    {% for mem in pages %}
         <div>
             <a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">
                 <p>{{ mem.title }}</p>
@@ -16,5 +16,7 @@
     {% else %}
         <p>Brak memów</p>    
     {% endfor %}
+    
+    {{ knp_pagination_render(pages) }}
     
 {% endblock %}

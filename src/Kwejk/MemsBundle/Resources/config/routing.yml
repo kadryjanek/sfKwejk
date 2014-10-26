@@ -3,8 +3,9 @@ kwejk_mems_homepage:
     defaults: { _controller: KwejkMemsBundle:Default:index }
 
 kwejk_mems_list:
-    path:     /
-    defaults: { _controller: KwejkMemsBundle:Mems:list }
+    path:     /{page}
+    defaults: { _controller: KwejkMemsBundle:Mems:list, page: 1 }
+    requirements: { page: \d+ }
 
 kwejk_mems_show:
     path:     /{slug}

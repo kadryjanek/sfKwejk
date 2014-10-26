@@ -25,13 +25,13 @@ class Builder extends ContainerAware
             'uri' => '#'
         ]);
         
-        
+        /*
         $menu->addChild('User')
             ->setAttribute('dropdown', true);
         $menu['User']->addChild('Profile', array('uri' => '#'))
             ->setAttribute('divider_append', true);
         $menu['User']->addChild('Logout', array('uri' => '#'));
-        
+        */
         return $menu;
     }
 }
