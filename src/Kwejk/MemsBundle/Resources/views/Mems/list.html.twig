@@ -4,16 +4,20 @@
 
 {% block body %}
 
+    <a href="{{ path('kwejk_mems_add') }}" class=" pull-right btn btn-info">Dodaj mema</a>
+
     <h1>Strona główna</h1>
     
-    <a href="{{ path('kwejk_mems_add') }}" class="btn btn-info">Dodaj mema</a>
-    
     {% for mem in pages %}
-        <div>
-            <a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">
-                <p>{{ mem.title }}</p>
-                <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+        <div class="media">
+            <a class="media-left pull-left" href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">
+                <img class="thumbnail" style="width: 200px" src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
             </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{ mem.title }}</h4>
+                <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
+                <p>Ocena: </p>
+            </div>
         </div>
     {% else %}
         <p>Brak memów</p>    
