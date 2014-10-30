@@ -38,8 +38,9 @@ class Builder extends ContainerAware
             ->setLinkAttribute('class', 'dropdown-toggle')
             ->setLinkAttribute('data-toggle', 'dropdown')
             ->setChildrenAttribute('class', 'dropdown-menu');
-        $menu['User']->addChild('Profil', array('route' => 'fos_user_profile_edit'))
-            ->setAttribute('divider_append', true);
+        $menu['User']->addChild('Profil', array('route' => 'fos_user_profile_edit'));
+        $menu['User']->addChild('Dodaj mema', array('route' => 'kwejk_mems_add'));
+        
         $menu['User']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
     
         return $menu;

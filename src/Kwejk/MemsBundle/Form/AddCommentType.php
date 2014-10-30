@@ -19,7 +19,9 @@ class AddCommentType extends AbstractType
                 'label'     => false,
                 'attr'      => array('placeholder' => "Treść komentarza")
             ))
-            ->add('save', 'submit')
+            ->add('save', 'submit', array(
+                'attr'      => array('class' => 'btn pull-right')
+            ))
         ;
     }
     

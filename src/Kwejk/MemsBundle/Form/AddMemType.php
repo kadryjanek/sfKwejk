@@ -18,7 +18,8 @@ class AddMemType extends AbstractType
             ->add('title')
             ->add('imageFile', 'file')
             ->add('save', 'submit', array(
-                'label'     => 'Zapisz'
+                'label'     => 'Dodaj',
+                'attr'      => array('class' => 'btn pull-right')
             ))
         ;
     }
