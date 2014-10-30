@@ -25,13 +25,35 @@ class Builder extends ContainerAware
             'uri' => '#'
         ]);
         
-        /*
-        $menu->addChild('User')
-            ->setAttribute('dropdown', true);
-        $menu['User']->addChild('Profile', array('uri' => '#'))
+        return $menu;
+    }
+    
+    public function userMenuAuthenticated(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
+    
+        $menu->addChild('User', ['uri' => '#'])
+            ->setAttribute('class', 'dropdown')
+            ->setLinkAttribute('class', 'dropdown-toggle')
+            ->setLinkAttribute('data-toggle', 'dropdown')
+            ->setChildrenAttribute('class', 'dropdown-menu');
+        $menu['User']->addChild('Profil', array('route' => 'fos_user_profile_edit'))
             ->setAttribute('divider_append', true);
-        $menu['User']->addChild('Logout', array('uri' => '#'));
-        */
+        $menu['User']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
+    
+        return $menu;
+    }
+    
+    public function userMenuNotAuthenticated(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
+    
+        $menu->addChild('Zaloguj', [
+            'route' => 'fos_user_security_login'
+        ]);
+    
         return $menu;
     }
 }

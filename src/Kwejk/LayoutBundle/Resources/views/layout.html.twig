@@ -14,16 +14,35 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {{ knp_menu_render('KwejkLayoutBundle:Builder:mainMenu') }}
-        
-        {% for flashMessage in app.session.flashbag.get('notice') %}
-            <div class="alert alert-success" role="alert">
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
-            
         <div class="container">
+            
+            <nav role="navigation" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse" id="navbar">
+                        {{ knp_menu_render('KwejkLayoutBundle:Builder:mainMenu') }}
+                        {% if app.user %}
+                            {{ knp_menu_render('KwejkLayoutBundle:Builder:userMenuAuthenticated') }}
+                        {% else %}
+                            {{ knp_menu_render('KwejkLayoutBundle:Builder:userMenuNotAuthenticated') }}
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+                    
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success" role="alert">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        
             {% block body %}{% endblock %}
+            
+            <div class="footer">
+                <div class="container">
+                    {{ knp_menu_render('KwejkLayoutBundle:Builder:mainMenu') }}
+                </div>
+              
+            </div>
         </div>
         
         {% block javascripts %}
