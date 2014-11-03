@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mems
@@ -56,6 +57,8 @@ class Mem
      * @Vich\UploadableField(mapping="mems_image", fileNameProperty="imageName")
      *
      * @var File $imageFile
+     * 
+     * @Assert\NotBlank()
      */
     private $imageFile;
     
@@ -63,6 +66,8 @@ class Mem
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
      */
     private $title;
     

@@ -1,0 +1,40 @@
+{% extends 'AdmingeneratorGeneratorBundle:Form:fields.html.twig' %}
+{# or #}
+{# extends 'form_div_layout.html.twig' #}
+
+{% block form_errors %}
+{% spaceless %}
+    {% for error in errors %}
+        <span class="help-block">
+        {{ error.messagePluralization is null
+            ? error.messageTemplate|trans(error.messageParameters, 'validators')
+            : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+        }}
+        </span>
+    {% endfor %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+{% block file_widget -%}
+    {% set type = type|default('file') %}
+    <input type="{{ type }}" id="{{ id }}" name="{{ full_name }}"
+    
+        {%- if read_only %} readonly="readonly"{% endif -%}
+        {%- if disabled %} disabled="disabled"{% endif -%}
+        {%- if required %} required="required"{% endif -%}
+    	
+        {%- for attrname, attrvalue in attr -%}
+            {{- " " -}}
+            {%- if attrname in ['placeholder', 'title'] -%}
+                {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
+            {%- elseif attrvalue is sameas(true) -%}
+                {{- attrname }}="{{ attrname }}"
+            {%- elseif attrvalue is not sameas(false) -%}
+                {{- attrname }}="{{ attrvalue }}"
+            {%- endif -%}
+        {%- endfor -%}
+    
+        {% if value is not empty %}value="{{ value }}" {% endif %}
+        
+    />
+{%- endblock file_widget %}
