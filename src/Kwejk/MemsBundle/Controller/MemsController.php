@@ -109,5 +109,16 @@ class MemsController extends Controller
             'form'  => $form->createView()
         ));
     }
+    
+    public function randomAction()
+    {
+        $mem = $this->getDoctrine()
+            ->getRepository('KwejkMemsBundle:Mem')
+            ->getRandom();
+        
+        return $this->render('KwejkMemsBundle:Mems:show.html.twig', array(
+            'mem' => $mem,
+        ));
+    }
 
 }

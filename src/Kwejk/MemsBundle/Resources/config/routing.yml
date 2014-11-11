@@ -5,6 +5,10 @@ kwejk_mems_homepage:
 kwejk_mems_add:
     path:     /panel/add
     defaults: { _controller: KwejkMemsBundle:Mems:add }
+    
+kwejk_random:
+    path:     /random
+    defaults: { _controller: KwejkMemsBundle:Mems:random }
 
 kwejk_mems_list:
     path:     /{page}

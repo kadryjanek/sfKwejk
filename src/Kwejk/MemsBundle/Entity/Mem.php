@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Mems
  *
  * @ORM\Table(name="mem")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kwejk\MemsBundle\Entity\MemRepository")
  * @Vich\Uploadable
  */
 class Mem
